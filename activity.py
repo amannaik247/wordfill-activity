@@ -12,7 +12,7 @@ import os
 import sys
 # Add parent directory to Python path to find shared modules
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from WordQuest-activity.dictionary_manager import DictionaryManager
+from dictionary_manager import DictionaryManager
 from sentences import SENTENCES
 
 class WordFillActivity(activity.Activity):

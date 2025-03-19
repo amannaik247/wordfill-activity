@@ -9,9 +9,10 @@ class WordMasteryLevel(Enum):
 
 class DictionaryManager:
     def __init__(self):
-        self.base_dir = os.path.dirname(os.path.abspath(__file__))
-        self.dictionary_file = os.path.join(self.base_dir, 'words', 'own_dictionary.txt')
-        self.usage_file = os.path.join(self.base_dir, 'words', 'word_usage.txt')
+        # Change to use parent directory of activities for shared storage
+        self.base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.dictionary_file = os.path.join(self.base_dir, 'shared', 'own_dictionary.txt')
+        self.usage_file = os.path.join(self.base_dir, 'shared', 'word_usage.txt')
         # Load both seen words and successful guesses
         self.word_data = self._load_usage_data()
 
@@ -35,6 +36,7 @@ class DictionaryManager:
 
     def _save_usage_data(self):
         """Save the word usage data to file."""
+        # Create shared directory if it doesn't exist
         os.makedirs(os.path.dirname(self.usage_file), exist_ok=True)
         with open(self.usage_file, 'w') as f:
             for word, data in self.word_data.items():
