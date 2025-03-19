@@ -9,7 +9,10 @@ from gettext import gettext as _
 
 import random
 import os
-from dictionary_manager import DictionaryManager
+import sys
+# Add parent directory to Python path to find shared modules
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from WordQuest-activity.dictionary_manager import DictionaryManager
 from sentences import SENTENCES
 
 class WordFillActivity(activity.Activity):
